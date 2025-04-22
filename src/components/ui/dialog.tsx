@@ -25,6 +25,7 @@ const DialogOverlay = React.forwardRef<
       className
     )}
     {...props}
+    ref={ref}
   />
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
@@ -120,3 +121,4 @@ export {
   DialogTitle,
   DialogDescription,
 }
+

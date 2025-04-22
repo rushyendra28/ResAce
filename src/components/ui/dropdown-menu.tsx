@@ -111,7 +111,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
-  </DropdownMenuPrimitive.CheckboxItem>
+  </DropdownMenuCheckboxItem>
 ))
 DropdownMenuCheckboxItem.displayName =
   DropdownMenuPrimitive.CheckboxItem.displayName
@@ -134,7 +134,7 @@ const DropdownMenuRadioItem = React.forwardRef<
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
-  </DropdownMenuPrimitive.RadioItem>
+  </DropdownMenuRadioItem>
 ))
 DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName
 
@@ -198,3 +198,4 @@ export {
   DropdownMenuSubTrigger,
   DropdownMenuRadioGroup,
 }
+
