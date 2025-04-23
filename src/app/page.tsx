@@ -12,6 +12,23 @@ import {useToast} from '@/hooks/use-toast';
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert"
 import {Info} from "lucide-react"
 
+const PacmanLoader = () => (
+  <div className="pacman-loader">
+    <div className="pacman">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div className="dots">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+);
+
 export default function Home() {
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [jobDescription, setJobDescription] = useState<string>('');
@@ -123,7 +140,13 @@ export default function Home() {
             disabled={loading}
             className="bg-primary text-primary-foreground font-bold rounded-md py-3 shadow-md hover:bg-primary/80"
           >
-            {loading ? 'Analyzing...' : 'Analyze'}
+            {loading ? (
+              <div className="flex items-center justify-center">
+                <PacmanLoader />
+              </div>
+            ) : (
+              'Analyze'
+            )}
           </Button>
         </CardContent>
       </Card>
