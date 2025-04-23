@@ -1,12 +1,12 @@
-/* Neon Cyberpunk Theme */
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+/* Cyberpunk Theme */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'VT323', monospace;
   background-color: #121212; /* Dark background */
   color: #f0f0f0; /* Light text */
 }
@@ -81,7 +81,9 @@ body {
   }
   body {
     @apply bg-background text-foreground;
-  }
+    font-size: 1.2em;
+    line-height: 1.6;
+}
 }
 
 /* Loading animation styles (adjust as needed) */
