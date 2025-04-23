@@ -78,74 +78,104 @@ export default function Home() {
   };
 
   return (
-    <div className="container mx-auto p-6 rounded-lg shadow-md">
-      <h1 className="text-3xl font-semibold mb-4 text-center">ResumeAce</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <div className="mb-8">
+        <h1 className="text-5xl font-bold text-center text-foreground drop-shadow-md">
+          ResAce
+        </h1>
+      </div>
 
-      <Card className="mb-4">
-        <CardHeader>
-          <CardTitle>Resume Analysis</CardTitle>
-          <CardDescription>Upload your resume and paste the job description to get an ATS compatibility score and improvement suggestions.</CardDescription>
-        </CardHeader>
-        <CardContent className="grid gap-4">
+      <Card className="w-full max-w-md bg-card shadow-2xl rounded-2xl">
+        <CardContent className="p-8 flex flex-col gap-6">
           <div className="flex flex-col gap-2">
-            <label htmlFor="resume-upload" className="text-sm font-medium">
+            <label
+              htmlFor="resume-upload"
+              className="text-sm font-medium text-foreground"
+            >
               Upload Resume (PDF):
             </label>
-            <Input id="resume-upload" type="file" accept=".pdf" onChange={handleResumeUpload} className="rounded-md" />
+            <Input
+              id="resume-upload"
+              type="file"
+              accept=".pdf"
+              onChange={handleResumeUpload}
+              className="rounded-md shadow-sm"
+            />
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="job-description" className="text-sm font-medium">
+            <label
+              htmlFor="job-description"
+              className="text-sm font-medium text-foreground"
+            >
               Job Description:
             </label>
             <Textarea
               id="job-description"
-              placeholder="Paste job description here"
+              placeholder="Enter job description here"
               rows={4}
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
-              className="rounded-md"
+              className="rounded-md shadow-sm"
             />
           </div>
-          <Button onClick={handleAnalyze} disabled={loading} className="bg-teal-500 hover:bg-teal-700 text-white font-bold rounded-md py-2 px-4">
+          <Button
+            onClick={handleAnalyze}
+            disabled={loading}
+            className="bg-primary text-primary-foreground font-bold rounded-md py-3 shadow-md hover:bg-primary/80"
+          >
             {loading ? 'Analyzing...' : 'Analyze'}
           </Button>
         </CardContent>
       </Card>
 
       {atsScore !== null && (
-        <Card className="mb-4">
+        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
           <CardHeader>
-            <CardTitle>ATS Compatibility Score</CardTitle>
-            <CardDescription>Your resume's compatibility score with the job description.</CardDescription>
+            <CardTitle className="text-2xl">ATS Compatibility Score</CardTitle>
+            <CardDescription>
+              Your resume's compatibility score with the job description.
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold text-teal-500">{atsScore}%</p>
+            <p className="text-3xl font-bold text-primary">{atsScore}%</p>
           </CardContent>
         </Card>
       )}
 
-        {resumeMatchScore !== null && (
-            <Card className="mb-4">
-                <CardHeader>
-                    <CardTitle>Resume to Job Description Match Score</CardTitle>
-                    <CardDescription>How well your resume matches the job description.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <p className="text-2xl font-bold text-teal-500">{resumeMatchScore}%</p>
-                </CardContent>
-            </Card>
-        )}
+      {resumeMatchScore !== null && (
+        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
+          <CardHeader>
+            <CardTitle className="text-2xl">
+              Resume to Job Description Match Score
+            </CardTitle>
+            <CardDescription>
+              How well your resume matches the job description.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-3xl font-bold text-primary">
+              {resumeMatchScore}%
+            </p>
+          </CardContent>
+        </Card>
+      )}
 
       {improvementSuggestions.length > 0 && (
-        <Card className="mb-4">
+        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
           <CardHeader>
-            <CardTitle>Resume Improvement Suggestions</CardTitle>
-            <CardDescription>Suggestions to improve your resume's ATS compatibility.</CardDescription>
+            <CardTitle className="text-2xl">
+              Resume Improvement Suggestions
+            </CardTitle>
+            <CardDescription>
+              Suggestions to improve your resume's ATS compatibility.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5">
               {improvementSuggestions.map((suggestion, index) => (
-                <li key={index} className="mb-2">{suggestion}</li>
+                <li key={index} className="mb-2">
+                  {suggestion}
+                </li>
               ))}
             </ul>
           </CardContent>
@@ -153,27 +183,34 @@ export default function Home() {
       )}
 
       {skillRecommendations.length > 0 && (
-        <Card className="mb-4">
+        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
           <CardHeader>
-            <CardTitle>Skill Recommendations</CardTitle>
-            <CardDescription>Skills you should acquire based on the job description.</CardDescription>
+            <CardTitle className="text-2xl">Skill Recommendations</CardTitle>
+            <CardDescription>
+              Skills you should acquire based on the job description.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5">
               {skillRecommendations.map((skill, index) => (
-                <li key={index} className="mb-2">{skill}</li>
+                <li key={index} className="mb-2">
+                  {skill}
+                </li>
               ))}
             </ul>
           </CardContent>
         </Card>
       )}
-        <Alert variant="default">
-            <Info className="h-4 w-4" />
-            <AlertTitle>Disclaimer</AlertTitle>
-            <AlertDescription>
-                This tool provides an estimate based on AI analysis. It should not be considered as definitive advice.
-            </AlertDescription>
-        </Alert>
+
+      <Alert variant="default" className="mt-8 w-full max-w-md">
+        <Info className="h-4 w-4" />
+        <AlertTitle>Disclaimer</AlertTitle>
+        <AlertDescription>
+          This tool provides an estimate based on AI analysis. It should not be
+          considered as definitive advice.
+        </AlertDescription>
+      </Alert>
     </div>
   );
 }
+
