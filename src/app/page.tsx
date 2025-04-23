@@ -137,7 +137,7 @@ export default function Home() {
           <div className="flex flex-col gap-2">
             <label
               htmlFor="resume-upload"
-              className="text-sm font-medium text-foreground"
+              className="text-lg font-medium text-foreground"
             >
               Upload Resume (PDF):
             </label>
@@ -146,13 +146,13 @@ export default function Home() {
               type="file"
               accept=".pdf"
               onChange={handleResumeUpload}
-              className="rounded-md shadow-sm bg-input text-foreground"
+              className="rounded-md shadow-sm bg-input text-foreground text-lg"
             />
           </div>
           <div className="flex flex-col gap-2">
             <label
               htmlFor="job-description"
-              className="text-sm font-medium text-foreground"
+              className="text-lg font-medium text-foreground"
             >
               Job Description:
             </label>
@@ -162,13 +162,13 @@ export default function Home() {
               rows={4}
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
-              className="rounded-md shadow-sm bg-input text-foreground"
+              className="rounded-md shadow-sm bg-input text-foreground text-lg"
             />
           </div>
           <Button
             onClick={handleAnalyze}
             disabled={loading}
-            className="bg-primary text-primary-foreground font-bold rounded-md py-3 shadow-md hover:bg-primary/80"
+            className="bg-primary text-primary-foreground font-bold rounded-md py-3 shadow-md hover:bg-primary/80 text-lg"
           >
             {loading ? (
               <div className="flex items-center justify-center">
@@ -184,13 +184,13 @@ export default function Home() {
       {atsScore !== null && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
-            <CardTitle className="text-2xl">ATS Compatibility Score</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-3xl">ATS Compatibility Score</CardTitle>
+            <CardDescription className="text-lg">
               Your resume's compatibility score with the job description.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-primary">{atsScore}%</p>
+            <p className="text-4xl font-bold text-primary">{atsScore}%</p>
           </CardContent>
         </Card>
       )}
@@ -198,15 +198,15 @@ export default function Home() {
       {resumeMatchScore !== null && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
-            <CardTitle className="text-2xl">
+            <CardTitle className="text-3xl">
               Resume to Job Description Match Score
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-lg">
               How well your resume matches the job description.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold text-primary">
+            <p className="text-4xl font-bold text-primary">
               {resumeMatchScore}%
             </p>
           </CardContent>
@@ -216,17 +216,17 @@ export default function Home() {
       {improvementSuggestions.length > 0 && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
-            <CardTitle className="text-2xl">
+            <CardTitle className="text-3xl">
               Resume Improvement Suggestions
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-lg">
               Suggestions to improve your resume's ATS compatibility.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5">
               {improvementSuggestions.map((suggestion, index) => (
-                <li key={index} className="mb-2">
+                <li key={index} className="mb-2 text-lg">
                   {suggestion}
                 </li>
               ))}
@@ -238,15 +238,15 @@ export default function Home() {
       {skillRecommendations.length > 0 && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
-            <CardTitle className="text-2xl">Skill Recommendations</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-3xl">Skill Recommendations</CardTitle>
+            <CardDescription className="text-lg">
               Skills you should acquire based on the job description.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5">
               {skillRecommendations.map((skill, index) => (
-                <li key={index} className="mb-2">
+                <li key={index} className="mb-2 text-lg">
                   {skill}
                 </li>
               ))}
@@ -257,3 +257,4 @@ export default function Home() {
     </div>
   );
 }
+
