@@ -78,9 +78,9 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-background">
       <div className="mb-8">
-        <h1 className="text-5xl font-bold text-center text-foreground drop-shadow-md">
+        <h1 className="text-5xl font-bold text-center text-foreground drop-shadow-md neon-text">
           ResAce
         </h1>
       </div>
@@ -99,7 +99,7 @@ export default function Home() {
               type="file"
               accept=".pdf"
               onChange={handleResumeUpload}
-              className="rounded-md shadow-sm"
+              className="rounded-md shadow-sm bg-input text-foreground"
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -115,7 +115,7 @@ export default function Home() {
               rows={4}
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
-              className="rounded-md shadow-sm"
+              className="rounded-md shadow-sm bg-input text-foreground"
             />
           </div>
           <Button
@@ -131,7 +131,7 @@ export default function Home() {
       {atsScore !== null && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
           <CardHeader>
-            <CardTitle className="text-2xl">ATS Compatibility Score</CardTitle>
+            <CardTitle className="text-2xl neon-text">ATS Compatibility Score</CardTitle>
             <CardDescription>
               Your resume's compatibility score with the job description.
             </CardDescription>
@@ -145,7 +145,7 @@ export default function Home() {
       {resumeMatchScore !== null && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
           <CardHeader>
-            <CardTitle className="text-2xl">
+            <CardTitle className="text-2xl neon-text">
               Resume to Job Description Match Score
             </CardTitle>
             <CardDescription>
@@ -163,7 +163,7 @@ export default function Home() {
       {improvementSuggestions.length > 0 && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
           <CardHeader>
-            <CardTitle className="text-2xl">
+            <CardTitle className="text-2xl neon-text">
               Resume Improvement Suggestions
             </CardTitle>
             <CardDescription>
@@ -185,7 +185,7 @@ export default function Home() {
       {skillRecommendations.length > 0 && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
           <CardHeader>
-            <CardTitle className="text-2xl">Skill Recommendations</CardTitle>
+            <CardTitle className="text-2xl neon-text">Skill Recommendations</CardTitle>
             <CardDescription>
               Skills you should acquire based on the job description.
             </CardDescription>
@@ -213,4 +213,3 @@ export default function Home() {
     </div>
   );
 }
-
