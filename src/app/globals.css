@@ -1,12 +1,12 @@
 /* Cyberpunk Theme */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Nova+Mono&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: 'VT323', monospace;
+  font-family: 'Nova Mono', monospace;
   background-color: #121212; /* Dark background */
   color: #f0f0f0; /* Light text */
 }
@@ -144,3 +144,4 @@ body::before {
     font-size: 1em;
   }
 }
+
