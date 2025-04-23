@@ -148,7 +148,7 @@ export default function Home() {
         </h1>
       </div>
 
-      <Card className="w-full max-w-md bg-card shadow-2xl rounded-2xl relative z-10">
+      <Card className="w-full max-w-lg bg-card shadow-2xl rounded-2xl relative z-10">
         <CardContent className="p-8 flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <label
@@ -199,7 +199,7 @@ export default function Home() {
       </Card>
 
       {atsScore !== null && (
-        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
+        <Card className="w-full max-w-lg mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
             <CardTitle className="text-3xl neon-glow">ATS Compatibility Score</CardTitle>
             <CardDescription className="text-lg">
@@ -213,7 +213,7 @@ export default function Home() {
       )}
 
       {resumeMatchScore !== null && (
-        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
+        <Card className="w-full max-w-lg mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
             <CardTitle className="text-3xl neon-glow">
               Resume to Job Description Match Score
@@ -231,7 +231,7 @@ export default function Home() {
       )}
 
       {improvementSuggestions.length > 0 && (
-        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
+        <Card className="w-full max-w-lg mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
             <CardTitle className="text-3xl neon-glow">
               Resume Improvement Suggestions
@@ -253,7 +253,7 @@ export default function Home() {
       )}
 
       {skillRecommendations.length > 0 && (
-        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
+        <Card className="w-full max-w-lg mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
             <CardTitle className="text-3xl neon-glow">Skill Recommendations</CardTitle>
             <CardDescription className="text-lg">
@@ -274,3 +274,4 @@ export default function Home() {
     </div>
   );
 }
+
