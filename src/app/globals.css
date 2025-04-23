@@ -90,7 +90,7 @@ body {
 .pacman-loader {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center the Pacman loader horizontally */
+  justify-content: center;
 }
 
 .pacman {
@@ -98,7 +98,7 @@ body {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: hsl(var(--primary)); /* Teal */
+  background-color: hsl(var(--primary));
   animation: rotate 0.6s linear infinite;
 }
 
@@ -106,7 +106,7 @@ body {
   position: absolute;
   width: 0;
   height: 0;
-  border: 10px solid hsl(var(--primary)); /* Teal */
+  border: 10px solid hsl(var(--primary));
   border-right-color: transparent;
   top: -10px;
   left: -10px;
@@ -124,13 +124,13 @@ body {
 
 .dots {
   display: flex;
-  margin-left: 5px; /* Add some space between Pacman and dots */
+  margin-left: 5px;
 }
 
 .dots > div {
   width: 5px;
   height: 5px;
-  background-color: hsl(var(--primary)); /* Teal */
+  background-color: hsl(var(--primary));
   border-radius: 50%;
   margin-left: 3px;
   animation: move 0.6s linear infinite;
