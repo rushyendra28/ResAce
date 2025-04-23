@@ -3,7 +3,7 @@ import './globals.css';
 import localFont from 'next/font/local'
 
 // Font files can be colocated inside of `app`
-const verve = localFont({ src: './Verveine-Regular.otf' })
+const breamcatcher = localFont({ src: './BreamCatcher.otf' })
 
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${verve.className} antialiased`}>
+      <body className={`${breamcatcher.className} antialiased`}>
         {children}
       </body>
     </html>
