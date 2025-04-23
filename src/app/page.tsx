@@ -45,12 +45,13 @@ const AnimatedPacman = () => {
 
   return (
     <div
-      className="pacman absolute"
+      className="pacman fixed"
       style={{
         top: position.top,
         left: position.left,
         transform: 'translate(-50%, -50%)',
-        zIndex: 10,
+        zIndex: 0,
+        opacity: 0.5,
       }}
     />
   );
@@ -124,13 +125,13 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-background relative overflow-hidden">
       <AnimatedPacman />
-      <div className="mb-8">
+      <div className="mb-8 relative z-10">
         <h1 className="text-5xl font-bold text-center text-foreground drop-shadow-md">
           ResAce
         </h1>
       </div>
 
-      <Card className="w-full max-w-md bg-card shadow-2xl rounded-2xl">
+      <Card className="w-full max-w-md bg-card shadow-2xl rounded-2xl relative z-10">
         <CardContent className="p-8 flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <label
@@ -180,7 +181,7 @@ export default function Home() {
       </Card>
 
       {atsScore !== null && (
-        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
+        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
             <CardTitle className="text-2xl">ATS Compatibility Score</CardTitle>
             <CardDescription>
@@ -194,7 +195,7 @@ export default function Home() {
       )}
 
       {resumeMatchScore !== null && (
-        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
+        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
             <CardTitle className="text-2xl">
               Resume to Job Description Match Score
@@ -212,7 +213,7 @@ export default function Home() {
       )}
 
       {improvementSuggestions.length > 0 && (
-        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
+        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
             <CardTitle className="text-2xl">
               Resume Improvement Suggestions
@@ -234,7 +235,7 @@ export default function Home() {
       )}
 
       {skillRecommendations.length > 0 && (
-        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
+        <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
             <CardTitle className="text-2xl">Skill Recommendations</CardTitle>
             <CardDescription>
@@ -253,7 +254,7 @@ export default function Home() {
         </Card>
       )}
 
-      <Alert variant="default" className="mt-8 w-full max-w-md">
+      <Alert variant="default" className="mt-8 w-full max-w-md relative z-10">
         <Info className="h-4 w-4" />
         <AlertTitle>Disclaimer</AlertTitle>
         <AlertDescription>
@@ -264,3 +265,4 @@ export default function Home() {
     </div>
   );
 }
+
