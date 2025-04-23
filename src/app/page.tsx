@@ -78,8 +78,10 @@ export default function Home() {
   };
 
   return (
-    <div className="container mx-auto p-4 flex flex-col gap-4">
-      <Card>
+    <div className="container mx-auto p-6 rounded-lg shadow-md">
+      <h1 className="text-3xl font-semibold mb-4 text-center">ResumeAce</h1>
+
+      <Card className="mb-4">
         <CardHeader>
           <CardTitle>Resume Analysis</CardTitle>
           <CardDescription>Upload your resume and paste the job description to get an ATS compatibility score and improvement suggestions.</CardDescription>
@@ -89,7 +91,7 @@ export default function Home() {
             <label htmlFor="resume-upload" className="text-sm font-medium">
               Upload Resume (PDF):
             </label>
-            <Input id="resume-upload" type="file" accept=".pdf" onChange={handleResumeUpload} />
+            <Input id="resume-upload" type="file" accept=".pdf" onChange={handleResumeUpload} className="rounded-md" />
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="job-description" className="text-sm font-medium">
@@ -101,40 +103,41 @@ export default function Home() {
               rows={4}
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
+              className="rounded-md"
             />
           </div>
-          <Button onClick={handleAnalyze} disabled={loading}>
+          <Button onClick={handleAnalyze} disabled={loading} className="bg-teal-500 hover:bg-teal-700 text-white font-bold rounded-md py-2 px-4">
             {loading ? 'Analyzing...' : 'Analyze'}
           </Button>
         </CardContent>
       </Card>
 
       {atsScore !== null && (
-        <Card>
+        <Card className="mb-4">
           <CardHeader>
             <CardTitle>ATS Compatibility Score</CardTitle>
             <CardDescription>Your resume's compatibility score with the job description.</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold">{atsScore}%</p>
+            <p className="text-2xl font-bold text-teal-500">{atsScore}%</p>
           </CardContent>
         </Card>
       )}
 
         {resumeMatchScore !== null && (
-            <Card>
+            <Card className="mb-4">
                 <CardHeader>
                     <CardTitle>Resume to Job Description Match Score</CardTitle>
                     <CardDescription>How well your resume matches the job description.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <p className="text-2xl font-bold">{resumeMatchScore}%</p>
+                    <p className="text-2xl font-bold text-teal-500">{resumeMatchScore}%</p>
                 </CardContent>
             </Card>
         )}
 
       {improvementSuggestions.length > 0 && (
-        <Card>
+        <Card className="mb-4">
           <CardHeader>
             <CardTitle>Resume Improvement Suggestions</CardTitle>
             <CardDescription>Suggestions to improve your resume's ATS compatibility.</CardDescription>
@@ -142,7 +145,7 @@ export default function Home() {
           <CardContent>
             <ul className="list-disc pl-5">
               {improvementSuggestions.map((suggestion, index) => (
-                <li key={index}>{suggestion}</li>
+                <li key={index} className="mb-2">{suggestion}</li>
               ))}
             </ul>
           </CardContent>
@@ -150,7 +153,7 @@ export default function Home() {
       )}
 
       {skillRecommendations.length > 0 && (
-        <Card>
+        <Card className="mb-4">
           <CardHeader>
             <CardTitle>Skill Recommendations</CardTitle>
             <CardDescription>Skills you should acquire based on the job description.</CardDescription>
@@ -158,13 +161,13 @@ export default function Home() {
           <CardContent>
             <ul className="list-disc pl-5">
               {skillRecommendations.map((skill, index) => (
-                <li key={index}>{skill}</li>
+                <li key={index} className="mb-2">{skill}</li>
               ))}
             </ul>
           </CardContent>
         </Card>
       )}
-        <Alert>
+        <Alert variant="default">
             <Info className="h-4 w-4" />
             <AlertTitle>Disclaimer</AlertTitle>
             <AlertDescription>
