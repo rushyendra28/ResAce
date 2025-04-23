@@ -52,15 +52,14 @@ const AnimatedText = ({text}: { text: string }) => {
       const timeout = setTimeout(() => {
         setDisplayText(prevText => prevText + text[index]);
         setIndex(prevIndex => prevIndex + 1);
-      }, 50); // Adjust the typing speed here
+      }, 50);
 
       return () => clearTimeout(timeout);
     } else {
-      // Reset the animation when it reaches the end
       const resetTimeout = setTimeout(() => {
         setDisplayText('');
         setIndex(0);
-      }, 2000); // Delay before reset
+      }, 2000);
 
       return () => clearTimeout(resetTimeout);
     }
@@ -142,9 +141,9 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-background relative overflow-hidden">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 relative overflow-hidden">
       <div className="mb-8 relative z-10">
-        <h1 className="text-5xl font-bold text-center text-foreground drop-shadow-md">
+        <h1 className="text-5xl font-bold text-center text-foreground drop-shadow-md neon-glow">
           ResAce
         </h1>
       </div>
@@ -185,11 +184,12 @@ export default function Home() {
           <Button
             onClick={handleAnalyze}
             disabled={loading}
-            className="bg-primary text-primary-foreground font-bold rounded-md py-3 shadow-md hover:bg-primary/80 text-lg"
+            className="button bg-primary text-primary-foreground font-bold rounded-md py-3 shadow-md hover:bg-primary/80 text-lg"
           >
             {loading ? (
               <div className="flex items-center justify-center">
                 <XPProgressBar />
+                <span className="ml-2 animated-text">Analyzing...</span>
               </div>
             ) : (
               'Analyze'
@@ -201,13 +201,13 @@ export default function Home() {
       {atsScore !== null && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
-            <CardTitle className="text-3xl">ATS Compatibility Score</CardTitle>
+            <CardTitle className="text-3xl neon-glow">ATS Compatibility Score</CardTitle>
             <CardDescription className="text-lg">
               Your resume's compatibility score with the job description.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-4xl font-bold text-primary">{atsScore}%</p>
+            <p className="text-4xl font-bold text-primary neon-glow">{atsScore}%</p>
           </CardContent>
         </Card>
       )}
@@ -215,7 +215,7 @@ export default function Home() {
       {resumeMatchScore !== null && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
-            <CardTitle className="text-3xl">
+            <CardTitle className="text-3xl neon-glow">
               Resume to Job Description Match Score
             </CardTitle>
             <CardDescription className="text-lg">
@@ -223,7 +223,7 @@ export default function Home() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-4xl font-bold text-primary">
+            <p className="text-4xl font-bold text-primary neon-glow">
               {resumeMatchScore}%
             </p>
           </CardContent>
@@ -233,7 +233,7 @@ export default function Home() {
       {improvementSuggestions.length > 0 && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
-            <CardTitle className="text-3xl">
+            <CardTitle className="text-3xl neon-glow">
               Resume Improvement Suggestions
             </CardTitle>
             <CardDescription className="text-lg">
@@ -255,7 +255,7 @@ export default function Home() {
       {skillRecommendations.length > 0 && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
-            <CardTitle className="text-3xl">Skill Recommendations</CardTitle>
+            <CardTitle className="text-3xl neon-glow">Skill Recommendations</CardTitle>
             <CardDescription className="text-lg">
               Skills you should acquire based on the job description.
             </CardDescription>
@@ -274,4 +274,3 @@ export default function Home() {
     </div>
   );
 }
-

@@ -1,40 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
 
 body {
-  font-family: 'VT323', monospace;
+  font-family: 'Source Code Pro', monospace;
+  background-color: #121212; /* Dark background */
+  color: #f0f0f0; /* Light text */
 }
 
-@layer base {
-  :root {
-    --background: 19, 17, 17;
-    --foreground: 255, 255, 255;
-    --primary: 98, 54, 255;
-    --secondary: 150, 150, 150;
-    --accent: 255, 102, 204;
-    --muted: 51, 51, 51;
-    --border: 102, 102, 102;
-    --input: 34, 34, 34;
-    --ring: 98, 54, 255;
-  }
+/* Neon Cyberpunk Theme */
+:root {
+  --background: 18, 18, 18; /* Darker background */
+  --foreground: 240, 240, 240; /* Lighter text */
+  --primary: 77, 148, 255; /* Electric blue */
+  --secondary: 102, 255, 153; /* Neon green */
+  --accent: 255, 51, 153; /* Cyber pink */
+  --muted: 68, 68, 68; /* Dark gray */
+  --border: 51, 51, 51; /* Darker border */
+  --input: 34, 34, 34; /* Darker input */
+  --ring: 77, 148, 255; /* Electric blue ring */
+  --card: 25, 25, 25; /* Dark card background */
+  --card-foreground: 240, 240, 240;
+  --popover: 34, 34, 34;
+  --popover-foreground: 240, 240, 240;
+  --destructive: 255, 51, 153;
+  --destructive-foreground: 17, 17, 17;
 
-  .dark {
-    --background: 19, 17, 17;
-    --foreground: 255, 255, 255;
-    --primary: 98, 54, 255;
-    --secondary: 150, 150, 150;
-    --accent: 255, 102, 204;
-    --muted: 51, 51, 51;
-    --border: 102, 102, 102;
-    --input: 34, 34, 34;
-    --ring: 98, 54, 255;
-  }
+  /* Chart colors */
+  --chart-1: 255, 204, 0; /* Yellow */
+  --chart-2: 51, 255, 255; /* Cyan */
+  --chart-3: 255, 51, 153; /* Pink */
+  --chart-4: 153, 51, 255; /* Purple */
+  --chart-5: 51, 255, 51; /* Green */
+
+  /* Sidebar colors */
+  --sidebar-background: 20, 20, 20;
+  --sidebar-foreground: 240, 240, 240;
+  --sidebar-primary: 77, 148, 255;
+  --sidebar-primary-foreground: 17, 17, 17;
+  --sidebar-accent: 84, 84, 84;
+  --sidebar-accent-foreground: 240, 240, 240;
+  --sidebar-border: 51, 51, 51;
+  --sidebar-ring: 77, 148, 255;
 }
 
+/* Dark mode (optional) */
+.dark {
+  --background: 18, 18, 18;
+  --foreground: 240, 240, 240;
+  --primary: 77, 148, 255;
+  --secondary: 102, 255, 153;
+  --accent: 255, 51, 153;
+  --muted: 68, 68, 68;
+  --border: 51, 51, 51;
+  --input: 34, 34, 34;
+  --ring: 77, 148, 255;
+  --card: 25, 25, 25;
+  --card-foreground: 240, 240, 240;
+  --popover: 34, 34, 34;
+  --popover-foreground: 240, 240, 240;
+  --destructive: 255, 51, 153;
+  --destructive-foreground: 17, 17, 17;
+}
+
+/* Add neon glow effect to key elements */
+.neon-glow {
+  text-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary));
+}
+
+.button {
+  box-shadow: 0 0 5px hsl(var(--accent)), 0 0 10px hsl(var(--accent));
+}
+
+/* Base layer styles */
 @layer base {
   * {
     @apply border-border;
@@ -44,6 +84,7 @@ body {
   }
 }
 
+/* Loading animation styles (adjust as needed) */
 .xp-loader-container {
   display: flex;
   align-items: center;
@@ -70,73 +111,34 @@ body {
   100% { width: 100%; }
 }
 
-.pacman {
-  position: relative;
-  width: 50px;
-  height: 50px;
+/* Animated text styles */
+.animated-text {
+  font-size: 1.2em;
+  color: hsl(var(--secondary));
+  text-shadow: 0 0 5px hsl(var(--secondary));
 }
 
-.pacman::before,
-.pacman::after {
-  content: '';
-  position: absolute;
+/* Cyberpunk background (example using stripes) */
+body::before {
+  content: "";
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  background-color: hsl(var(--primary-foreground)); /* Yellow */
-  clip: rect(0, 50px, 50px, 0);
-  animation: mouth 0.5s linear infinite;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(77, 148, 255, 0.05),
+    rgba(77, 148, 255, 0.05) 10px,
+    rgba(102, 255, 153, 0.05) 10px,
+    rgba(102, 255, 153, 0.05) 20px
+  );
+  z-index: -1;
 }
 
-.pacman::after {
-  clip: rect(0, 0, 50px, 25px);
-  animation-direction: reverse;
-}
-
-.point {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: hsl(var(--foreground)); /* White/Light Gray */
-  animation: eat 0.5s linear infinite;
-}
-
-.point:nth-child(2) {
-  left: 80%;
-  animation-delay: 0.1s;
-}
-
-.point:nth-child(3) {
-  left: 20%;
-  animation-delay: 0.2s;
-}
-
-@keyframes mouth {
-  0% {
-    clip: rect(0, 50px, 50px, 0);
-  }
-  50% {
-    clip: rect(0, 25px, 50px, 0);
-  }
-  100% {
-    clip: rect(0, 50px, 50px, 0);
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .animated-text {
+    font-size: 1em;
   }
 }
-
-@keyframes eat {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(0.1);
-    opacity: 0;
-  }
-}
-
