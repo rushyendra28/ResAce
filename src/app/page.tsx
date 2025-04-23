@@ -11,6 +11,49 @@ import {generateResumeImprovementSuggestions} from '@/ai/flows/resume-improvemen
 import {useToast} from '@/hooks/use-toast';
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert"
 import {Info} from "lucide-react"
+import { FileText } from 'lucide-react';
+
+const BouncingResume = () => {
+  const [position, setPosition] = useState({y: 0});
+  const [direction, setDirection] = useState(1); // 1 for down, -1 for up
+
+  useEffect(() => {
+    const animationFrame = () => {
+      setPosition(prevPosition => {
+        let newY = prevPosition.y + direction * 2; // Adjust speed here
+
+        // Reverse direction when hitting top or bottom
+        if (newY > 100) {
+          setDirection(-1);
+          newY = 100;
+        } else if (newY < -20) {
+          setDirection(1);
+          newY = -20;
+        }
+
+        return { y: newY };
+      });
+
+      requestAnimationFrame(animationFrame);
+    };
+
+    const animationId = requestAnimationFrame(animationFrame);
+
+    return () => cancelAnimationFrame(animationId);
+  }, [direction]);
+
+  return (
+    <FileText
+      size={60}
+      style={{
+        position: 'relative',
+        top: `${position.y}px`,
+        transition: 'top 0.1s ease-in-out',
+        animation: 'shake 0.8s ease-in-out infinite',
+      }}
+    />
+  );
+};
 
 const PacmanLoader = () => (
   <div className="pacman">
@@ -171,7 +214,8 @@ export default function Home() {
           >
             {loading ? (
               <div className="flex items-center justify-center">
-                <PacmanLoader />
+                {/*<PacmanLoader />*/}
+                <BouncingResume />
               </div>
             ) : (
               'Analyze'
@@ -265,4 +309,3 @@ export default function Home() {
     </div>
   );
 }
-
