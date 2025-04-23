@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Button} from '@/components/ui/button';
 import {Textarea} from '@/components/ui/textarea';
 import {Input} from '@/components/ui/input';
@@ -19,6 +19,42 @@ const PacmanLoader = () => (
     <div className="point"></div>
   </div>
 );
+
+const AnimatedPacman = () => {
+  const [position, setPosition] = useState({top: '0%', left: '50%'});
+  const [direction, setDirection] = useState<'down' | 'up'>('down');
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setPosition(prev => {
+        const newTop = parseInt(prev.top) + (direction === 'down' ? 1 : -1);
+
+        if (newTop > 95) {
+          setDirection('up');
+          return {top: '95%', left: Math.random() * 100 + '%'};
+        } else if (newTop < 5) {
+          setDirection('down');
+          return {top: '5%', left: Math.random() * 100 + '%'};
+        }
+        return {top: newTop + '%', left: prev.left};
+      });
+    }, 100);
+
+    return () => clearInterval(intervalId);
+  }, [direction]);
+
+  return (
+    <div
+      className="pacman absolute"
+      style={{
+        top: position.top,
+        left: position.left,
+        transform: 'translate(-50%, -50%)',
+        zIndex: 10,
+      }}
+    />
+  );
+};
 
 export default function Home() {
   const [resumeFile, setResumeFile] = useState<File | null>(null);
@@ -86,7 +122,8 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-background">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-background relative overflow-hidden">
+      <AnimatedPacman />
       <div className="mb-8">
         <h1 className="text-5xl font-bold text-center text-foreground drop-shadow-md">
           ResAce
@@ -227,4 +264,3 @@ export default function Home() {
     </div>
   );
 }
-
