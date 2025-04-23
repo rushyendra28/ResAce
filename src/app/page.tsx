@@ -97,7 +97,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-background">
       <div className="mb-8">
-        <h1 className="text-5xl font-bold text-center text-foreground drop-shadow-md neon-text">
+        <h1 className="text-5xl font-bold text-center text-foreground drop-shadow-md">
           ResAce
         </h1>
       </div>
@@ -154,7 +154,7 @@ export default function Home() {
       {atsScore !== null && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
           <CardHeader>
-            <CardTitle className="text-2xl neon-text">ATS Compatibility Score</CardTitle>
+            <CardTitle className="text-2xl">ATS Compatibility Score</CardTitle>
             <CardDescription>
               Your resume's compatibility score with the job description.
             </CardDescription>
@@ -168,7 +168,7 @@ export default function Home() {
       {resumeMatchScore !== null && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
           <CardHeader>
-            <CardTitle className="text-2xl neon-text">
+            <CardTitle className="text-2xl">
               Resume to Job Description Match Score
             </CardTitle>
             <CardDescription>
@@ -186,7 +186,7 @@ export default function Home() {
       {improvementSuggestions.length > 0 && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
           <CardHeader>
-            <CardTitle className="text-2xl neon-text">
+            <CardTitle className="text-2xl">
               Resume Improvement Suggestions
             </CardTitle>
             <CardDescription>
@@ -208,7 +208,7 @@ export default function Home() {
       {skillRecommendations.length > 0 && (
         <Card className="w-full max-w-md mt-8 bg-card shadow-2xl rounded-2xl">
           <CardHeader>
-            <CardTitle className="text-2xl neon-text">Skill Recommendations</CardTitle>
+            <CardTitle className="text-2xl">Skill Recommendations</CardTitle>
             <CardDescription>
               Skills you should acquire based on the job description.
             </CardDescription>
