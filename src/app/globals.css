@@ -11,73 +11,27 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 0%; /* Black */
-    --foreground: 60 100% 75%; /* Yellow */
-    --card: 0 0% 10%; /* Dark gray */
-    --card-foreground: 60 100% 75%; /* Yellow */
-    --popover: 0 0% 10%; /* Dark gray */
-    --popover-foreground: 60 100% 75%; /* Yellow */
-    --primary: 48 100% 50%; /* Orange */
-    --primary-foreground: 0 0% 0%; /* Black */
-    --secondary: 240 100% 50%; /* Blue */
-    --secondary-foreground: 0 0% 0%; /* Black */
-    --muted: 0 0% 30%; /* Dark gray */
-    --muted-foreground: 0 0% 60%; /* Gray */
-    --accent: 120 100% 50%; /* Green */
-    --accent-foreground: 0 0% 0%; /* Black */
-    --destructive: 0 100% 50%; /* Red */
-    --destructive-foreground: 0 0% 100%; /* White */
-    --border: 0 0% 30%; /* Dark gray */
-    --input: 0 0% 20%; /* Dark gray */
-    --ring: 48 100% 50%; /* Orange */
-    --chart-1: 48 100% 50%;
-    --chart-2: 240 100% 50%;
-    --chart-3: 0 100% 50%;
-    --chart-4: 120 100% 50%;
-    --chart-5: 300 100% 50%;
-    --sidebar-background: 0 0% 10%; /* Dark gray */
-    --sidebar-foreground: 60 100% 75%; /* Yellow */
-    --sidebar-primary: 48 100% 50%; /* Orange */
-    --sidebar-primary-foreground: 0 0% 0%; /* Black */
-    --sidebar-accent: 120 100% 50%; /* Green */
-    --sidebar-accent-foreground: 0 0% 0%; /* Black */
-    --sidebar-border: 0 0% 30%; /* Dark gray */
-    --sidebar-ring: 48 100% 50%; /* Orange */
+    --background: 19, 17, 17;
+    --foreground: 255, 255, 255;
+    --primary: 98, 54, 255;
+    --secondary: 150, 150, 150;
+    --accent: 255, 102, 204;
+    --muted: 51, 51, 51;
+    --border: 102, 102, 102;
+    --input: 34, 34, 34;
+    --ring: 98, 54, 255;
   }
 
   .dark {
-    --background: 0 0% 0%; /* Black */
-    --foreground: 60 100% 75%; /* Yellow */
-    --card: 0 0% 10%; /* Dark gray */
-    --card-foreground: 60 100% 75%; /* Yellow */
-    --popover: 0 0% 10%; /* Dark gray */
-    --popover-foreground: 60 100% 75%; /* Yellow */
-    --primary: 48 100% 50%; /* Orange */
-    --primary-foreground: 0 0% 0%; /* Black */
-    --secondary: 240 100% 50%; /* Blue */
-    --secondary-foreground: 0 0% 0%; /* Black */
-    --muted: 0 0% 30%; /* Dark gray */
-    --muted-foreground: 0 0% 60%; /* Gray */
-    --accent: 120 100% 50%; /* Green */
-    --accent-foreground: 0 0% 0%; /* Black */
-    --destructive: 0 100% 50%; /* Red */
-    --destructive-foreground: 0 0% 100%; /* White */
-    --border: 0 0% 30%; /* Dark gray */
-    --input: 0 0% 20%; /* Dark gray */
-    --ring: 48 100% 50%; /* Orange */
-    --chart-1: 48 100% 50%;
-    --chart-2: 240 100% 50%;
-    --chart-3: 0 100% 50%;
-    --chart-4: 120 100% 50%;
-    --chart-5: 300 100% 50%;
-    --sidebar-background: 0 0% 10%; /* Dark gray */
-    --sidebar-foreground: 60 100% 75%; /* Yellow */
-    --sidebar-primary: 48 100% 50%; /* Orange */
-    --sidebar-primary-foreground: 0 0% 0%; /* Black */
-    --sidebar-accent: 120 100% 50%; /* Green */
-    --sidebar-accent-foreground: 0 0% 0%; /* Black */
-    --sidebar-border: 0 0% 30%; /* Dark gray */
-    --sidebar-ring: 48 100% 50%; /* Orange */
+    --background: 19, 17, 17;
+    --foreground: 255, 255, 255;
+    --primary: 98, 54, 255;
+    --secondary: 150, 150, 150;
+    --accent: 255, 102, 204;
+    --muted: 51, 51, 51;
+    --border: 102, 102, 102;
+    --input: 34, 34, 34;
+    --ring: 98, 54, 255;
   }
 }
 
@@ -88,6 +42,32 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.xp-loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.xp-bar {
+  width: 200px;
+  height: 16px;
+  border: 1px solid hsl(var(--foreground));
+  background-color: hsl(var(--background));
+  overflow: hidden;
+}
+
+.xp-progress {
+  height: 100%;
+  width: 0;
+  background-color: hsl(var(--primary));
+  animation: xp-progress-animation 2s linear infinite;
+}
+
+@keyframes xp-progress-animation {
+  0% { width: 0; }
+  100% { width: 100%; }
 }
 
 .pacman {
@@ -159,6 +139,4 @@ body {
     opacity: 0;
   }
 }
-
-
 

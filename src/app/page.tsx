@@ -10,6 +10,15 @@ import {getSkillRecommendations} from '@/ai/flows/skill-recommendations';
 import {generateResumeImprovementSuggestions} from '@/ai/flows/resume-improvement-suggestions';
 import {useToast} from '@/hooks/use-toast';
 
+const XPProgressBar = () => (
+  <div className="xp-loader-container">
+    <div className="xp-bar">
+      <div className="xp-progress"></div>
+    </div>
+  </div>
+);
+
+
 const LoadingBar = () => {
   const [progress, setProgress] = useState(0);
 
@@ -180,7 +189,7 @@ export default function Home() {
           >
             {loading ? (
               <div className="flex items-center justify-center">
-                <LoadingSpinner />
+                <XPProgressBar />
               </div>
             ) : (
               'Analyze'
@@ -265,3 +274,4 @@ export default function Home() {
     </div>
   );
 }
+
