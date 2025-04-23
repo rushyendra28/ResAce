@@ -8,72 +8,73 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 10%; /* Black */
-    --foreground: 120 100% 75%; /* Bright Green */
-    --card: 255 0% 15%; /* Dark Gray */
-    --card-foreground: 120 100% 75%; /* Bright Green */
-    --popover: 255 0% 15%; /* Dark Gray */
-    --popover-foreground: 120 100% 75%; /* Bright Green */
-    --primary: 50 100% 50%; /* Neon Yellow */
-    --primary-foreground: 0 0% 0%; /* Black */
-    --secondary: 220 100% 50%; /* Electric Blue */
-    --secondary-foreground: 0 0% 0%; /* Black */
-    --muted: 255 0% 25%; /* Medium Gray */
-    --muted-foreground: 255 0% 50%; /* Light Gray */
-    --accent: 300 100% 50%; /* Cyber Pink */
-    --accent-foreground: 0 0% 0%; /* Black */
+    --background: 220 10% 96%; /* Light gray */
+    --foreground: 220 10% 39%; /* Dark gray */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 220 10% 39%; /* Dark gray */
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 220 10% 39%; /* Dark gray */
+    --primary: 180 100% 25%; /* Teal */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 220 5% 59%; /* Medium gray */
+    --secondary-foreground: 220 10% 39%; /* Dark gray */
+    --muted: 220 10% 89%; /* Light gray */
+    --muted-foreground: 220 8% 49%; /* Medium gray */
+    --accent: 180 100% 25%; /* Teal */
+    --accent-foreground: 0 0% 100%; /* White */
     --destructive: 0 100% 50%; /* Red */
-    --destructive-foreground: 0 0% 0%; /* Black */
-    --border: 255 0% 30%; /* Slightly Lighter Gray */
-    --input: 255 0% 20%; /* Darker Gray */
-    --ring: 50 100% 50%; /* Neon Yellow */
-    --chart-1: 120 100% 50%;
-    --chart-2: 50 100% 50%;
-    --chart-3: 300 100% 50%;
-    --chart-4: 220 100% 50%;
-    --chart-5: 0 100% 50%;
-    --sidebar-background: 255 0% 15%; /* Dark Gray */
-    --sidebar-foreground: 120 100% 75%; /* Bright Green */
-    --sidebar-primary: 50 100% 50%; /* Neon Yellow */
-    --sidebar-primary-foreground: 0 0% 0%; /* Black */
-    --sidebar-accent: 300 100% 50%; /* Cyber Pink */
-    --sidebar-accent-foreground: 0 0% 0%; /* Black */
-    --sidebar-border: 255 0% 30%; /* Slightly Lighter Gray */
-    --sidebar-ring: 50 100% 50%; /* Neon Yellow */
+    --destructive-foreground: 0 0% 100%; /* White */
+    --border: 220 13% 91%; /* Light gray */
+    --input: 220 20% 83%; /* Light gray */
+    --ring: 180 100% 25%; /* Teal */
+    --chart-1: 180 100% 25%;
+    --chart-2: 220 5% 59%;
+    --chart-3: 0 100% 50%;
+    --chart-4: 51 100% 50%;
+    --chart-5: 39 100% 50%;
+    --sidebar-background: 220 10% 96%; /* Light gray */
+    --sidebar-foreground: 220 10% 39%; /* Dark gray */
+    --sidebar-primary: 180 100% 25%; /* Teal */
+    --sidebar-primary-foreground: 0 0% 100%; /* White */
+    --sidebar-accent: 180 100% 25%; /* Teal */
+    --sidebar-accent-foreground: 0 0% 100%; /* White */
+    --sidebar-border: 220 13% 91%; /* Light gray */
+    --sidebar-ring: 180 100% 25%; /* Teal */
   }
+
   .dark {
-    --background: 0 0% 10%; /* Black */
-    --foreground: 120 100% 75%; /* Bright Green */
-    --card: 255 0% 15%; /* Dark Gray */
-    --card-foreground: 120 100% 75%; /* Bright Green */
-    --popover: 255 0% 15%; /* Dark Gray */
-    --popover-foreground: 120 100% 75%; /* Bright Green */
-    --primary: 50 100% 50%; /* Neon Yellow */
-    --primary-foreground: 0 0% 0%; /* Black */
-    --secondary: 220 100% 50%; /* Electric Blue */
-    --secondary-foreground: 0 0% 0%; /* Black */
-    --muted: 255 0% 25%; /* Medium Gray */
-    --muted-foreground: 255 0% 50%; /* Light Gray */
-    --accent: 300 100% 50%; /* Cyber Pink */
-    --accent-foreground: 0 0% 0%; /* Black */
+    --background: 220 10% 10%; /* Dark gray */
+    --foreground: 220 10% 83%; /* Light gray */
+    --card: 220 10% 15%; /* Dark gray */
+    --card-foreground: 220 10% 83%; /* Light gray */
+    --popover: 220 10% 15%; /* Dark gray */
+    --popover-foreground: 220 10% 83%; /* Light gray */
+    --primary: 180 100% 75%; /* Teal */
+    --primary-foreground: 220 10% 10%; /* Dark gray */
+    --secondary: 220 5% 39%; /* Medium gray */
+    --secondary-foreground: 220 10% 83%; /* Light gray */
+    --muted: 220 10% 20%; /* Dark gray */
+    --muted-foreground: 220 8% 69%; /* Medium gray */
+    --accent: 180 100% 75%; /* Teal */
+    --accent-foreground: 220 10% 10%; /* Dark gray */
     --destructive: 0 100% 50%; /* Red */
-    --destructive-foreground: 0 0% 0%; /* Black */
-    --border: 255 0% 30%; /* Slightly Lighter Gray */
-    --input: 255 0% 20%; /* Darker Gray */
-    --ring: 50 100% 50%; /* Neon Yellow */
-    --chart-1: 120 100% 50%;
-    --chart-2: 50 100% 50%;
-    --chart-3: 300 100% 50%;
-    --chart-4: 220 100% 50%;
-    --chart-5: 0 100% 50%;
-    --sidebar-background: 255 0% 15%; /* Dark Gray */
-    --sidebar-foreground: 120 100% 75%; /* Bright Green */
-    --sidebar-primary: 50 100% 50%; /* Neon Yellow */
-    --sidebar-primary-foreground: 0 0% 0%; /* Black */
-    --sidebar-accent: 300 100% 50%; /* Cyber Pink */
-    --sidebar-accent-foreground: 0 0% 0%; /* Black */
-    --sidebar-border: 255 0% 30%; /* Slightly Lighter Gray */
-    --sidebar-ring: 50 100% 50%; /* Neon Yellow */
+    --destructive-foreground: 0 0% 100%; /* White */
+    --border: 220 13% 31%; /* Medium gray */
+    --input: 220 20% 23%; /* Dark gray */
+    --ring: 180 100% 75%; /* Teal */
+        --chart-1: 180 100% 75%;
+        --chart-2: 220 5% 39%;
+        --chart-3: 0 100% 50%;
+        --chart-4: 51 100% 50%;
+        --chart-5: 39 100% 50%;
+    --sidebar-background: 220 10% 10%; /* Dark gray */
+    --sidebar-foreground: 220 10% 83%; /* Light gray */
+    --sidebar-primary: 180 100% 75%; /* Teal */
+    --sidebar-primary-foreground: 220 10% 10%; /* Dark gray */
+    --sidebar-accent: 180 100% 75%; /* Teal */
+    --sidebar-accent-foreground: 220 10% 10%; /* Dark gray */
+    --sidebar-border: 220 13% 31%; /* Medium gray */
+    --sidebar-ring: 180 100% 75%; /* Teal */
   }
 }
 
@@ -89,6 +90,7 @@ body {
 .pacman-loader {
   display: flex;
   align-items: center;
+  justify-content: center; /* Center the Pacman loader horizontally */
 }
 
 .pacman {
@@ -96,7 +98,7 @@ body {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: hsl(var(--primary)); /* Neon Yellow */
+  background-color: hsl(var(--primary)); /* Teal */
   animation: rotate 0.6s linear infinite;
 }
 
@@ -104,7 +106,7 @@ body {
   position: absolute;
   width: 0;
   height: 0;
-  border: 10px solid hsl(var(--primary)); /* Neon Yellow */
+  border: 10px solid hsl(var(--primary)); /* Teal */
   border-right-color: transparent;
   top: -10px;
   left: -10px;
@@ -122,12 +124,13 @@ body {
 
 .dots {
   display: flex;
+  margin-left: 5px; /* Add some space between Pacman and dots */
 }
 
 .dots > div {
   width: 5px;
   height: 5px;
-  background-color: hsl(var(--primary)); /* Neon Yellow */
+  background-color: hsl(var(--primary)); /* Teal */
   border-radius: 50%;
   margin-left: 3px;
   animation: move 0.6s linear infinite;
@@ -193,4 +196,10 @@ body {
   100% {
     transform: translateX(15px);
   }
+}
+.neon-text {
+  text-shadow:
+    0 0 5px hsl(var(--primary)),
+    0 0 10px hsl(var(--primary)),
+    0 0 20px hsl(var(--primary));
 }
