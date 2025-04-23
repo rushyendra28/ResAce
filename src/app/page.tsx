@@ -16,6 +16,7 @@ export default function Home() {
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [jobDescription, setJobDescription] = useState<string>('');
   const [atsScore, setAtsScore] = useState<number | null>(null);
+  const [resumeMatchScore, setResumeMatchScore] = useState<number | null>(null);
   const [improvementSuggestions, setImprovementSuggestions] = useState<string[]>([]);
   const [skillRecommendations, setSkillRecommendations] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
@@ -53,6 +54,7 @@ export default function Home() {
       });
 
       setAtsScore(atsAnalysisResult.atsCompatibilityScore);
+      setResumeMatchScore(atsAnalysisResult.resumeToJobDescriptionMatchScore);
       setImprovementSuggestions(atsAnalysisResult.resumeImprovementSuggestions);
 
       const skillRecommendationsResult = await getSkillRecommendations({
@@ -118,6 +120,18 @@ export default function Home() {
           </CardContent>
         </Card>
       )}
+
+        {resumeMatchScore !== null && (
+            <Card>
+                <CardHeader>
+                    <CardTitle>Resume to Job Description Match Score</CardTitle>
+                    <CardDescription>How well your resume matches the job description.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <p className="text-2xl font-bold">{resumeMatchScore}%</p>
+                </CardContent>
+            </Card>
+        )}
 
       {improvementSuggestions.length > 0 && (
         <Card>

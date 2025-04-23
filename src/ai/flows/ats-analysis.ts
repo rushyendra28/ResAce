@@ -1,7 +1,7 @@
 'use server';
 
 /**
- * @fileOverview Analyzes a resume against a job description to provide an ATS compatibility score and recommendations.
+ * @fileOverview Analyzes a resume against a job description to provide an ATS compatibility score, a resume to job description match score, and recommendations.
  *
  * - analyzeResumeAgainstJobDescription - A function that analyzes the resume and job description.
  * - ATSAnalysisInput - The input type for the analyzeResumeAgainstJobDescription function.
@@ -19,8 +19,9 @@ const ATSAnalysisInputSchema = z.object({
 export type ATSAnalysisInput = z.infer<typeof ATSAnalysisInputSchema>;
 
 const ATSAnalysisOutputSchema = z.object({
-  atsCompatibilityScore: z.number().describe('The ATS compatibility score (0-100).'),
-  resumeImprovementSuggestions: z.array(z.string()).describe('Suggestions for resume improvements.'),
+  atsCompatibilityScore: z.number().describe('The ATS compatibility score (0-100) indicating how well the resume is parsed by ATS systems.'),
+  resumeToJobDescriptionMatchScore: z.number().describe('The score (0-100) representing how well the resume matches the job description.'),
+  resumeImprovementSuggestions: z.array(z.string()).describe('Suggestions for resume improvements to better match the job description.'),
 });
 export type ATSAnalysisOutput = z.infer<typeof ATSAnalysisOutputSchema>;
 
@@ -40,23 +41,27 @@ const prompt = ai.definePrompt({
   },
   output: {
     schema: z.object({
-      atsCompatibilityScore: z.number().describe('The ATS compatibility score (0-100).'),
-      resumeImprovementSuggestions: z.array(z.string()).describe('Suggestions for resume improvements.'),
+      atsCompatibilityScore: z.number().describe('The ATS compatibility score (0-100) indicating how well the resume is parsed by ATS systems.'),
+      resumeToJobDescriptionMatchScore: z.number().describe('The score (0-100) representing how well the resume matches the job description.'),
+      resumeImprovementSuggestions: z.array(z.string()).describe('Suggestions for resume improvements to better match the job description.'),
     }),
   },
   prompt: `You are an expert in Applicant Tracking Systems (ATS) and resume optimization.
 
-  Analyze the following resume against the job description and provide an ATS compatibility score and suggestions for improvement.
+Analyze the following resume against the job description to provide an ATS compatibility score, a resume to job description match score, and suggestions for improvement.
 
-  Resume:
-  {{resumeText}}
+Resume:
+{{resumeText}}
 
-  Job Description:
-  {{jobDescription}}
+Job Description:
+{{jobDescription}}
 
-  Provide the ATS compatibility score as a number between 0 and 100.
-  Provide the resume improvement suggestions as a list of strings.
-  `,
+Provide the ATS compatibility score as a number between 0 and 100. This score indicates how well the resume is parsed by ATS systems.
+
+Provide the resume to job description match score as a number between 0 and 100. This score represents how well the resume matches the job description.
+
+Provide the resume improvement suggestions as a list of strings. These suggestions should be specific and actionable, aimed at improving the resume's match to the job description.
+`,
 });
 
 const atsAnalysisFlow = ai.defineFlow<
@@ -77,4 +82,3 @@ const atsAnalysisFlow = ai.defineFlow<
     return output!;
   }
 );
-
