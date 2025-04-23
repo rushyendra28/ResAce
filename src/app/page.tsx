@@ -9,53 +9,61 @@ import {analyzeResumeAgainstJobDescription} from '@/ai/flows/ats-analysis';
 import {getSkillRecommendations} from '@/ai/flows/skill-recommendations';
 import {generateResumeImprovementSuggestions} from '@/ai/flows/resume-improvement-suggestions';
 import {useToast} from '@/hooks/use-toast';
-import { FileText } from 'lucide-react';
 
-const BouncingResume = () => {
-  const [position, setPosition] = useState({y: 0});
-  const [direction, setDirection] = useState(1); // 1 for down, -1 for up
+const LoadingBar = () => {
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const animationFrame = () => {
-      setPosition(prevPosition => {
-        let newY = prevPosition.y + direction * 2; // Adjust speed here
-
-        // Reverse direction when hitting top or bottom
-        if (newY > 100) {
-          setDirection(-1);
-          newY = 100;
-        } else if (newY < -20) {
-          setDirection(1);
-          newY = -20;
-        }
-
-        return { y: newY };
+    const interval = setInterval(() => {
+      setProgress((prevProgress) => {
+        const newProgress = prevProgress + 5;
+        return newProgress > 95 ? 95 : newProgress;
       });
+    }, 200);
 
-      requestAnimationFrame(animationFrame);
-    };
-
-    const animationId = requestAnimationFrame(animationFrame);
-
-    return () => cancelAnimationFrame(animationId);
-  }, [direction]);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <FileText
-      size={60}
-      style={{
-        position: 'relative',
-        top: `${position.y}px`,
-        transition: 'top 0.1s ease-in-out',
-        animation: 'shake 0.8s ease-in-out infinite',
-      }}
-    />
+    <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+      <div
+        className="bg-blue-600 h-2.5 rounded-full dark:bg-blue-500"
+        style={{width: `${progress}%`}}
+      ></div>
+    </div>
   );
 };
 
+const AnimatedText = ({text}: { text: string }) => {
+  const [displayText, setDisplayText] = useState('');
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (index < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText(prevText => prevText + text[index]);
+        setIndex(prevIndex => prevIndex + 1);
+      }, 50); // Adjust the typing speed here
+
+      return () => clearTimeout(timeout);
+    } else {
+      // Reset the animation when it reaches the end
+      const resetTimeout = setTimeout(() => {
+        setDisplayText('');
+        setIndex(0);
+      }, 2000); // Delay before reset
+
+      return () => clearTimeout(resetTimeout);
+    }
+  }, [index, text]);
+
+  return <span className="font-bold text-foreground">{displayText}</span>;
+};
+
 const LoadingSpinner = () => (
-  <div className="flex items-center justify-center">
-    <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-primary border-solid"></div>
+  <div className="flex flex-col items-center">
+    <LoadingBar />
+    <AnimatedText text="Analyzing..." />
   </div>
 );
 
@@ -257,4 +265,3 @@ export default function Home() {
     </div>
   );
 }
-
