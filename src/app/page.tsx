@@ -53,6 +53,12 @@ const BouncingResume = () => {
   );
 };
 
+const LoadingSpinner = () => (
+  <div className="flex items-center justify-center">
+    <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-primary border-solid"></div>
+  </div>
+);
+
 export default function Home() {
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [jobDescription, setJobDescription] = useState<string>('');
@@ -166,7 +172,7 @@ export default function Home() {
           >
             {loading ? (
               <div className="flex items-center justify-center">
-                <BouncingResume />
+                <LoadingSpinner />
               </div>
             ) : (
               'Analyze'
@@ -251,5 +257,3 @@ export default function Home() {
     </div>
   );
 }
-
-
