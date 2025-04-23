@@ -12,10 +12,11 @@ import {useToast} from '@/hooks/use-toast';
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert"
 import {Info} from "lucide-react"
 
-const Spinner = () => (
-  <div className="spinner">
-    <div className="double-bounce1"></div>
-    <div className="double-bounce2"></div>
+const PacmanLoader = () => (
+  <div className="pacman">
+    <div className="point"></div>
+    <div className="point"></div>
+    <div className="point"></div>
   </div>
 );
 
@@ -132,7 +133,7 @@ export default function Home() {
           >
             {loading ? (
               <div className="flex items-center justify-center">
-                <Spinner />
+                <PacmanLoader />
               </div>
             ) : (
               'Analyze'
@@ -226,3 +227,4 @@ export default function Home() {
     </div>
   );
 }
+

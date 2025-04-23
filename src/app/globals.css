@@ -1,81 +1,83 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: 'Verve', sans-serif;
+  font-family: 'Press Start 2P', monospace;
 }
 
 @layer base {
   :root {
-    --background: 220 10% 96%; /* Light gray */
-    --foreground: 220 10% 39%; /* Dark gray */
-    --card: 0 0% 100%; /* White */
-    --card-foreground: 220 10% 39%; /* Dark gray */
-    --popover: 0 0% 100%; /* White */
-    --popover-foreground: 220 10% 39%; /* Dark gray */
-    --primary: 180 100% 25%; /* Teal */
-    --primary-foreground: 0 0% 100%; /* White */
-    --secondary: 220 5% 59%; /* Medium gray */
-    --secondary-foreground: 220 10% 39%; /* Dark gray */
-    --muted: 220 10% 89%; /* Light gray */
-    --muted-foreground: 220 8% 49%; /* Medium gray */
-    --accent: 180 100% 25%; /* Teal */
-    --accent-foreground: 0 0% 100%; /* White */
+    --background: 0 0% 0%; /* Black */
+    --foreground: 60 100% 75%; /* Yellow */
+    --card: 0 0% 10%; /* Dark gray */
+    --card-foreground: 60 100% 75%; /* Yellow */
+    --popover: 0 0% 10%; /* Dark gray */
+    --popover-foreground: 60 100% 75%; /* Yellow */
+    --primary: 48 100% 50%; /* Orange */
+    --primary-foreground: 0 0% 0%; /* Black */
+    --secondary: 240 100% 50%; /* Blue */
+    --secondary-foreground: 0 0% 0%; /* Black */
+    --muted: 0 0% 30%; /* Dark gray */
+    --muted-foreground: 0 0% 60%; /* Gray */
+    --accent: 120 100% 50%; /* Green */
+    --accent-foreground: 0 0% 0%; /* Black */
     --destructive: 0 100% 50%; /* Red */
     --destructive-foreground: 0 0% 100%; /* White */
-    --border: 220 13% 91%; /* Light gray */
-    --input: 220 20% 83%; /* Light gray */
-    --ring: 180 100% 25%; /* Teal */
-    --chart-1: 180 100% 25%;
-    --chart-2: 220 5% 59%;
+    --border: 0 0% 30%; /* Dark gray */
+    --input: 0 0% 20%; /* Dark gray */
+    --ring: 48 100% 50%; /* Orange */
+    --chart-1: 48 100% 50%;
+    --chart-2: 240 100% 50%;
     --chart-3: 0 100% 50%;
-    --chart-4: 51 100% 50%;
-    --chart-5: 39 100% 50%;
-    --sidebar-background: 220 10% 96%; /* Light gray */
-    --sidebar-foreground: 220 10% 39%; /* Dark gray */
-    --sidebar-primary: 180 100% 25%; /* Teal */
-    --sidebar-primary-foreground: 0 0% 100%; /* White */
-    --sidebar-accent: 180 100% 25%; /* Teal */
-    --sidebar-accent-foreground: 0 0% 100%; /* White */
-    --sidebar-border: 220 13% 91%; /* Light gray */
-    --sidebar-ring: 180 100% 25%; /* Teal */
+    --chart-4: 120 100% 50%;
+    --chart-5: 300 100% 50%;
+    --sidebar-background: 0 0% 10%; /* Dark gray */
+    --sidebar-foreground: 60 100% 75%; /* Yellow */
+    --sidebar-primary: 48 100% 50%; /* Orange */
+    --sidebar-primary-foreground: 0 0% 0%; /* Black */
+    --sidebar-accent: 120 100% 50%; /* Green */
+    --sidebar-accent-foreground: 0 0% 0%; /* Black */
+    --sidebar-border: 0 0% 30%; /* Dark gray */
+    --sidebar-ring: 48 100% 50%; /* Orange */
   }
 
   .dark {
-    --background: 220 10% 10%; /* Dark gray */
-    --foreground: 220 10% 83%; /* Light gray */
-    --card: 220 10% 15%; /* Dark gray */
-    --card-foreground: 220 10% 83%; /* Light gray */
-    --popover: 220 10% 15%; /* Dark gray */
-    --popover-foreground: 220 10% 83%; /* Light gray */
-    --primary: 180 100% 75%; /* Teal */
-    --primary-foreground: 220 10% 10%; /* Dark gray */
-    --secondary: 220 5% 39%; /* Medium gray */
-    --secondary-foreground: 220 10% 83%; /* Light gray */
-    --muted: 220 10% 20%; /* Dark gray */
-    --muted-foreground: 220 8% 69%; /* Medium gray */
-    --accent: 180 100% 75%; /* Teal */
-    --accent-foreground: 220 10% 10%; /* Dark gray */
+    --background: 0 0% 0%; /* Black */
+    --foreground: 60 100% 75%; /* Yellow */
+    --card: 0 0% 10%; /* Dark gray */
+    --card-foreground: 60 100% 75%; /* Yellow */
+    --popover: 0 0% 10%; /* Dark gray */
+    --popover-foreground: 60 100% 75%; /* Yellow */
+    --primary: 48 100% 50%; /* Orange */
+    --primary-foreground: 0 0% 0%; /* Black */
+    --secondary: 240 100% 50%; /* Blue */
+    --secondary-foreground: 0 0% 0%; /* Black */
+    --muted: 0 0% 30%; /* Dark gray */
+    --muted-foreground: 0 0% 60%; /* Gray */
+    --accent: 120 100% 50%; /* Green */
+    --accent-foreground: 0 0% 0%; /* Black */
     --destructive: 0 100% 50%; /* Red */
     --destructive-foreground: 0 0% 100%; /* White */
-    --border: 220 13% 31%; /* Medium gray */
-    --input: 220 20% 23%; /* Dark gray */
-    --ring: 180 100% 75%; /* Teal */
-        --chart-1: 180 100% 75%;
-        --chart-2: 220 5% 39%;
-        --chart-3: 0 100% 50%;
-        --chart-4: 51 100% 50%;
-        --chart-5: 39 100% 50%;
-    --sidebar-background: 220 10% 10%; /* Dark gray */
-    --sidebar-foreground: 220 10% 83%; /* Light gray */
-    --sidebar-primary: 180 100% 75%; /* Teal */
-    --sidebar-primary-foreground: 220 10% 10%; /* Dark gray */
-    --sidebar-accent: 180 100% 75%; /* Teal */
-    --sidebar-accent-foreground: 220 10% 10%; /* Dark gray */
-    --sidebar-border: 220 13% 31%; /* Medium gray */
-    --sidebar-ring: 180 100% 75%; /* Teal */
+    --border: 0 0% 30%; /* Dark gray */
+    --input: 0 0% 20%; /* Dark gray */
+    --ring: 48 100% 50%; /* Orange */
+    --chart-1: 48 100% 50%;
+    --chart-2: 240 100% 50%;
+    --chart-3: 0 100% 50%;
+    --chart-4: 120 100% 50%;
+    --chart-5: 300 100% 50%;
+    --sidebar-background: 0 0% 10%; /* Dark gray */
+    --sidebar-foreground: 60 100% 75%; /* Yellow */
+    --sidebar-primary: 48 100% 50%; /* Orange */
+    --sidebar-primary-foreground: 0 0% 0%; /* Black */
+    --sidebar-accent: 120 100% 50%; /* Green */
+    --sidebar-accent-foreground: 0 0% 0%; /* Black */
+    --sidebar-border: 0 0% 30%; /* Dark gray */
+    --sidebar-ring: 48 100% 50%; /* Orange */
   }
 }
 
@@ -88,43 +90,74 @@ body {
   }
 }
 
-.spinner {
-  width: 40px;
-  height: 40px;
+.pacman {
   position: relative;
-  margin: 100px auto;
+  width: 50px;
+  height: 50px;
 }
 
-.double-bounce1, .double-bounce2 {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: hsl(var(--primary));
-  opacity: 0.6;
+.pacman::before,
+.pacman::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
-  
-  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
-  animation: sk-bounce 2.0s infinite ease-in-out;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: hsl(var(--primary-foreground)); /* Yellow */
+  clip: rect(0, 50px, 50px, 0);
+  animation: mouth 0.5s linear infinite;
 }
 
-.double-bounce2 {
-  -webkit-animation-delay: -1.0s;
-  animation-delay: -1.0s;
+.pacman::after {
+  clip: rect(0, 0, 50px, 25px);
+  animation-direction: reverse;
 }
 
-@-webkit-keyframes sk-bounce {
-  0%, 100% { -webkit-transform: scale(0.0) }
-  50% { -webkit-transform: scale(1.0) }
+.point {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: hsl(var(--foreground)); /* White/Light Gray */
+  animation: eat 0.5s linear infinite;
 }
 
-@keyframes sk-bounce {
-  0%, 100% { 
-    transform: scale(0.0);
-    -webkit-transform: scale(0.0);
-  } 50% { 
-    transform: scale(1.0);
-    -webkit-transform: scale(1.0);
+.point:nth-child(2) {
+  left: 80%;
+  animation-delay: 0.1s;
+}
+
+.point:nth-child(3) {
+  left: 20%;
+  animation-delay: 0.2s;
+}
+
+@keyframes mouth {
+  0% {
+    clip: rect(0, 50px, 50px, 0);
+  }
+  50% {
+    clip: rect(0, 25px, 50px, 0);
+  }
+  100% {
+    clip: rect(0, 50px, 50px, 0);
   }
 }
+
+@keyframes eat {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 0;
+  }
+}
+
+
