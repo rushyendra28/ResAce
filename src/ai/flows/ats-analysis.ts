@@ -42,7 +42,7 @@ const prompt = ai.definePrompt({
   output: {
     schema: z.object({
       atsCompatibilityScore: z.number().describe('The ATS compatibility score (0-100) indicating how well the resume is parsed by ATS systems.'),
-      resumeToJobDescriptionMatchScore: z.number().describe('The score (0-100) representing how well the resume matches the job description.'),
+      resumeToJobDescriptionMatchScore: z.number().describe('The score (0-100) representing how well the resume matches the job description. Base the score on presence of keywords, skills, and experiences mentioned in the job description'),
       resumeImprovementSuggestions: z.array(z.string()).describe('Suggestions for resume improvements to better match the job description.'),
     }),
   },
@@ -56,11 +56,11 @@ Resume:
 Job Description:
 {{jobDescription}}
 
-Provide the ATS compatibility score as a number between 0 and 100. This score indicates how well the resume is parsed by ATS systems.
+Provide the ATS compatibility score as a number between 0 and 100. This score indicates how well the resume is parsed by ATS systems. Consider factors such as the resume's formatting, use of standard section headings, and avoidance of unusual characters or elements that may confuse the parser. A higher score indicates better compatibility.
 
-Provide the resume to job description match score as a number between 0 and 100. This score represents how well the resume matches the job description.
+Provide the resume to job description match score as a number between 0 and 100. This score represents how well the resume matches the job description. Base the score on presence of keywords, skills, and experiences mentioned in the job description. A higher score indicates a better match.
 
-Provide the resume improvement suggestions as a list of strings. These suggestions should be specific and actionable, aimed at improving the resume's match to the job description.
+Provide the resume improvement suggestions as a list of strings. These suggestions should be specific and actionable, aimed at improving the resume's match to the job description. Focus on areas where the resume is lacking in terms of keywords, skills, or experience.
 `,
 });
 
