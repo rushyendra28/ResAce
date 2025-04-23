@@ -1,9 +1,8 @@
 import type {Metadata} from 'next';
 import './globals.css';
-import localFont from 'next/font/local'
+import { Inter } from 'next/font/google';
 
-// Font files can be colocated inside of `app`
-const breamcatcher = localFont({ src: './BreamCatcher.otf' })
+const inter = Inter({ subsets: ['latin'] });
 
 
 export const metadata: Metadata = {
@@ -18,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${breamcatcher.className} antialiased`}>
+      <body className={`${inter.className} antialiased`}>
         {children}
       </body>
     </html>
