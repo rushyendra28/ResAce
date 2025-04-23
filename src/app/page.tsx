@@ -9,8 +9,6 @@ import {analyzeResumeAgainstJobDescription} from '@/ai/flows/ats-analysis';
 import {getSkillRecommendations} from '@/ai/flows/skill-recommendations';
 import {generateResumeImprovementSuggestions} from '@/ai/flows/resume-improvement-suggestions';
 import {useToast} from '@/hooks/use-toast';
-import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert"
-import {Info} from "lucide-react"
 import { FileText } from 'lucide-react';
 
 const BouncingResume = () => {
@@ -50,51 +48,6 @@ const BouncingResume = () => {
         top: `${position.y}px`,
         transition: 'top 0.1s ease-in-out',
         animation: 'shake 0.8s ease-in-out infinite',
-      }}
-    />
-  );
-};
-
-const PacmanLoader = () => (
-  <div className="pacman">
-    <div className="point"></div>
-    <div className="point"></div>
-    <div className="point"></div>
-  </div>
-);
-
-const AnimatedPacman = () => {
-  const [position, setPosition] = useState({top: '0%', left: '50%'});
-  const [direction, setDirection] = useState<'down' | 'up'>('down');
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setPosition(prev => {
-        const newTop = parseInt(prev.top) + (direction === 'down' ? 1 : -1);
-
-        if (newTop > 95) {
-          setDirection('up');
-          return {top: '95%', left: Math.random() * 100 + '%'};
-        } else if (newTop < 5) {
-          setDirection('down');
-          return {top: '5%', left: Math.random() * 100 + '%'};
-        }
-        return {top: newTop + '%', left: prev.left};
-      });
-    }, 100);
-
-    return () => clearInterval(intervalId);
-  }, [direction]);
-
-  return (
-    <div
-      className="pacman fixed"
-      style={{
-        top: position.top,
-        left: position.left,
-        transform: 'translate(-50%, -50%)',
-        zIndex: 0,
-        opacity: 0.5,
       }}
     />
   );
@@ -167,7 +120,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-background relative overflow-hidden">
-      <AnimatedPacman />
       <div className="mb-8 relative z-10">
         <h1 className="text-5xl font-bold text-center text-foreground drop-shadow-md">
           ResAce
@@ -214,7 +166,6 @@ export default function Home() {
           >
             {loading ? (
               <div className="flex items-center justify-center">
-                {/*<PacmanLoader />*/}
                 <BouncingResume />
               </div>
             ) : (
@@ -297,16 +248,8 @@ export default function Home() {
           </CardContent>
         </Card>
       )}
-
-      <Alert variant="default" className="mt-8 w-full max-w-md relative z-10">
-        <Info className="h-4 w-4" />
-        <AlertTitle>Disclaimer</AlertTitle>
-        <AlertDescription>
-          This tool provides an estimate based on AI analysis. It should not be
-          considered as definitive advice.
-        </AlertDescription>
-      </Alert>
     </div>
   );
 }
+
 
