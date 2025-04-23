@@ -1,12 +1,12 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 body {
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'VT323', monospace;
 }
 
 @layer base {
@@ -159,5 +159,6 @@ body {
     opacity: 0;
   }
 }
+
 
 
