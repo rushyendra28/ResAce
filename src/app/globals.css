@@ -1,77 +1,53 @@
-/* Cyberpunk Theme */
-@import url('https://fonts.googleapis.com/css2?family=VT323&family=Nova+Mono&display=swap');
+/* Modern Professional Theme */
+@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
+  font-family: 'Inter', sans-serif; /* Modern sans-serif font */
+  background-color: #F5F5F5; /* Light gray background */
+  color: #333333; /* Dark gray text */
+}
+
+h1 {
   font-family: 'Nova Mono', monospace;
-  background-color: #121212; /* Dark background */
-  color: #f0f0f0; /* Light text */
 }
 
 :root {
-  --background: 18, 18, 18; /* Darker background */
-  --foreground: 240, 240, 240; /* Lighter text */
-  --primary: 77, 148, 255; /* Electric blue */
-  --secondary: 102, 255, 153; /* Neon green */
-  --accent: 255, 51, 153; /* Cyber pink */
-  --muted: 68, 68, 68; /* Dark gray */
-  --border: 51, 51, 51; /* Darker border */
-  --input: 34, 34, 34; /* Darker input */
-  --ring: 77, 148, 255; /* Electric blue ring */
-  --card: 25, 25, 25; /* Dark card background */
-  --card-foreground: 240, 240, 240;
-  --popover: 34, 34, 34;
-  --popover-foreground: 240, 240, 240;
-  --destructive: 255, 51, 153;
-  --destructive-foreground: 17, 17, 17;
+  --background: 255, 255, 255; /* White background */
+  --foreground: 51, 51, 51; /* Dark gray text */
+  --primary: 0, 128, 128; /* Teal */
+  --secondary: 173, 216, 230; /* Light blue */
+  --accent: 220, 220, 220; /* Light gray accent */
+  --muted: 150, 150, 150; /* Medium gray */
+  --border: 200, 200, 200; /* Light gray border */
+  --input: 245, 245, 245; /* Very light gray input */
+  --ring: 0, 128, 128; /* Teal ring */
+  --card: 255, 255, 255; /* White card background */
+  --card-foreground: 51, 51, 51;
+  --popover: 255, 255, 255;
+  --popover-foreground: 51, 51, 51;
+  --destructive: 220, 53, 69; /* Red */
+  --destructive-foreground: 255, 255, 255;
 
   /* Chart colors */
-  --chart-1: 255, 204, 0; /* Yellow */
-  --chart-2: 51, 255, 255; /* Cyan */
-  --chart-3: 255, 51, 153; /* Pink */
-  --chart-4: 153, 51, 255; /* Purple */
-  --chart-5: 51, 255, 51; /* Green */
+  --chart-1: 54, 162, 235; /* Blue */
+  --chart-2: 255, 99, 132; /* Red */
+  --chart-3: 255, 205, 86; /* Yellow */
+  --chart-4: 75, 192, 192; /* Green */
+  --chart-5: 153, 102, 255; /* Purple */
 
   /* Sidebar colors */
-  --sidebar-background: 20, 20, 20;
-  --sidebar-foreground: 240, 240, 240;
-  --sidebar-primary: 77, 148, 255;
-  --sidebar-primary-foreground: 17, 17, 17;
-  --sidebar-accent: 84, 84, 84;
-  --sidebar-accent-foreground: 240, 240, 240;
-  --sidebar-border: 51, 51, 51;
-  --sidebar-ring: 77, 148, 255;
-}
-
-/* Dark mode (optional) */
-.dark {
-  --background: 18, 18, 18;
-  --foreground: 240, 240, 240;
-  --primary: 77, 148, 255;
-  --secondary: 102, 255, 153;
-  --accent: 255, 51, 153;
-  --muted: 68, 68, 68;
-  --border: 51, 51, 51;
-  --input: 34, 34, 34;
-  --ring: 77, 148, 255;
-  --card: 25, 25, 25;
-  --card-foreground: 240, 240, 240;
-  --popover: 34, 34, 34;
-  --popover-foreground: 240, 240, 240;
-  --destructive: 255, 51, 153;
-  --destructive-foreground: 17, 17, 17;
-}
-
-/* Add neon glow effect to key elements */
-.neon-glow {
-  text-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary));
-}
-
-.button {
-  box-shadow: 0 0 5px hsl(var(--accent)), 0 0 10px hsl(var(--accent));
+  --sidebar-background: 245, 245, 245;
+  --sidebar-foreground: 51, 51, 51;
+  --sidebar-primary: 0, 128, 128;
+  --sidebar-primary-foreground: 255, 255, 255;
+  --sidebar-accent: 200, 200, 200;
+  --sidebar-accent-foreground: 51, 51, 51;
+  --sidebar-border: 220, 220, 220;
+  --sidebar-ring: 0, 128, 128;
 }
 
 /* Base layer styles */
@@ -79,11 +55,13 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
-    font-size: 1.2em;
-    line-height: 1.6;
-}
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
 }
 
 /* Loading animation styles (adjust as needed) */
@@ -120,24 +98,6 @@ body {
   text-shadow: 0 0 5px hsl(var(--secondary));
 }
 
-/* Cyberpunk background (example using stripes) */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(77, 148, 255, 0.05),
-    rgba(77, 148, 255, 0.05) 10px,
-    rgba(102, 255, 153, 0.05) 10px,
-    rgba(102, 255, 153, 0.05) 20px
-  );
-  z-index: -1;
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .animated-text {
@@ -145,3 +105,70 @@ body::before {
   }
 }
 
+/* Subtle box shadow for depth */
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-2xl {
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Rounded corners for a softer look */
+.rounded-md {
+  border-radius: 0.375rem; /* 6px */
+}
+
+.rounded-lg {
+  border-radius: 0.5rem; /* 8px */
+}
+
+.rounded-xl {
+  border-radius: 0.75rem; /* 12px */
+}
+
+.rounded-2xl {
+  border-radius: 1rem; /* 16px */
+}
+
+/* Transition for smoother interactions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Button styles */
+.button {
+  transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Add smooth transition to text and background colors */
+body,
+.bg-background,
+.text-foreground,
+.bg-card,
+.text-card-foreground,
+.bg-popover,
+.text-popover-foreground,
+.bg-primary,
+.text-primary-foreground,
+.bg-secondary,
+.text-secondary-foreground,
+.bg-muted,
+.text-muted-foreground,
+.bg-accent,
+.text-accent-foreground,
+.bg-destructive,
+.text-destructive-foreground {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

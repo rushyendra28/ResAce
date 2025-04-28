@@ -9,6 +9,7 @@ import {analyzeResumeAgainstJobDescription} from '@/ai/flows/ats-analysis';
 import {getSkillRecommendations} from '@/ai/flows/skill-recommendations';
 import {generateResumeImprovementSuggestions} from '@/ai/flows/resume-improvement-suggestions';
 import {useToast} from '@/hooks/use-toast';
+import {Progress} from '@/components/ui/progress';
 
 const XPProgressBar = () => (
   <div className="xp-loader-container">
@@ -75,6 +76,13 @@ const LoadingSpinner = () => (
   </div>
 );
 
+const AnalyzingProgressBar = ({progress}: { progress: number }) => (
+  <div className="flex flex-col items-center">
+    <Progress value={progress} className="w-full max-w-md mb-2" />
+    <p className="text-sm text-muted-foreground">Analyzing... {progress}%</p>
+  </div>
+);
+
 export default function Home() {
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [jobDescription, setJobDescription] = useState<string>('');
@@ -83,6 +91,7 @@ export default function Home() {
   const [improvementSuggestions, setImprovementSuggestions] = useState<string[]>([]);
   const [skillRecommendations, setSkillRecommendations] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
+    const [analysisProgress, setAnalysisProgress] = useState(0); // New state for analysis progress
   const {toast} = useToast();
 
   const handleResumeUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -110,7 +119,16 @@ export default function Home() {
     }
 
     setLoading(true);
+      setAnalysisProgress(0); // Reset progress on new analysis
     try {
+      // Simulate analysis progress
+      const interval = setInterval(() => {
+        setAnalysisProgress((prevProgress) => {
+          const newProgress = prevProgress + 10;
+          return newProgress > 95 ? 95 : newProgress;
+        });
+      }, 300);
+
       const atsAnalysisResult = await analyzeResumeAgainstJobDescription({
         resume: resumeFile,
         jobDescription: jobDescription,
@@ -128,6 +146,8 @@ export default function Home() {
         title: 'Success',
         description: 'Analysis complete!',
       });
+         clearInterval(interval);
+        setAnalysisProgress(100); // Ensure it reaches 100%
     } catch (error: any) {
       console.error('Analysis failed:', error);
       toast({
@@ -137,13 +157,14 @@ export default function Home() {
       });
     } finally {
       setLoading(false);
+         setAnalysisProgress(0);
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 relative overflow-hidden">
       <div className="mb-8 relative z-10">
-        <h1 className="text-5xl font-bold text-center text-foreground drop-shadow-md neon-glow" style={{ fontFamily: 'VT323, monospace' }}>
+        <h1 className="text-5xl font-bold text-center text-foreground drop-shadow-md" style={{ fontFamily: 'Nova Mono, monospace' }}>
           ResAce
         </h1>
       </div>
@@ -184,12 +205,11 @@ export default function Home() {
           <Button
             onClick={handleAnalyze}
             disabled={loading}
-            className="button bg-primary text-primary-foreground font-bold rounded-md py-3 shadow-md hover:bg-primary/80 text-lg"
+            className="button bg-primary text-primary-foreground font-bold rounded-md py-3 shadow-md hover:bg-primary/80 text-lg transition-all"
           >
             {loading ? (
               <div className="flex items-center justify-center">
-                <XPProgressBar />
-                <span className="ml-2 animated-text">Analyzing...</span>
+                <AnalyzingProgressBar progress={analysisProgress} />
               </div>
             ) : (
               'Analyze'
@@ -201,13 +221,13 @@ export default function Home() {
       {atsScore !== null && (
         <Card className="w-full max-w-3xl mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
-            <CardTitle className="text-3xl neon-glow">ATS Compatibility Score</CardTitle>
+            <CardTitle className="text-3xl">ATS Compatibility Score</CardTitle>
             <CardDescription className="text-lg">
               Your resume's compatibility score with the job description.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-4xl font-bold text-primary neon-glow">{atsScore}%</p>
+            <p className="text-4xl font-bold text-primary">{atsScore}%</p>
           </CardContent>
         </Card>
       )}
@@ -215,7 +235,7 @@ export default function Home() {
       {resumeMatchScore !== null && (
         <Card className="w-full max-w-3xl mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
-            <CardTitle className="text-3xl neon-glow">
+            <CardTitle className="text-3xl">
               Resume to Job Description Match Score
             </CardTitle>
             <CardDescription className="text-lg">
@@ -223,7 +243,7 @@ export default function Home() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-4xl font-bold text-primary neon-glow">
+            <p className="text-4xl font-bold text-primary">
               {resumeMatchScore}%
             </p>
           </CardContent>
@@ -233,7 +253,7 @@ export default function Home() {
       {improvementSuggestions.length > 0 && (
         <Card className="w-full max-w-3xl mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
-            <CardTitle className="text-3xl neon-glow">
+            <CardTitle className="text-3xl">
               Resume Improvement Suggestions
             </CardTitle>
             <CardDescription className="text-lg">
@@ -255,7 +275,7 @@ export default function Home() {
       {skillRecommendations.length > 0 && (
         <Card className="w-full max-w-3xl mt-8 bg-card shadow-2xl rounded-2xl relative z-10">
           <CardHeader>
-            <CardTitle className="text-3xl neon-glow">Skill Recommendations</CardTitle>
+            <CardTitle className="text-3xl">Skill Recommendations</CardTitle>
             <CardDescription className="text-lg">
               Skills you should acquire based on the job description.
             </CardDescription>
@@ -274,4 +294,3 @@ export default function Home() {
     </div>
   );
 }
-
